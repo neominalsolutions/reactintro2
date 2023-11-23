@@ -13,6 +13,9 @@ import AdminLayout from './components/layouts/AdminLayout';
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
+
+// <Accordion />
+
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>
