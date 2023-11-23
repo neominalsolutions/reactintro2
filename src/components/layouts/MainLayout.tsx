@@ -25,6 +25,10 @@ export default function MainLayout() {
 			text: 'İletişim',
 			url: '/contact',
 		},
+		{
+			text: 'Makaleler',
+			url: '/posts',
+		},
 	];
 
 	return (

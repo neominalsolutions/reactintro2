@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import AdminLayout from './components/layouts/AdminLayout';
+import PostsPageApiFunc from './pages/PostsPageApiFunc';
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
@@ -17,7 +18,7 @@ const root = ReactDOM.createRoot(
 // <Accordion />
 
 root.render(
-	<React.StrictMode>
+	<>
 		<BrowserRouter>
 			<Routes>
 				{/* <Route path="/" element={<><h1>Anasayfa</h1></>}></Route>
@@ -27,6 +28,7 @@ root.render(
 					<Route path="" Component={HomePage}></Route>
 					<Route path="about" Component={AboutPage}></Route>
 					<Route path="contact" Component={ContactPage}></Route>
+					<Route path="posts" Component={PostsPageApiFunc}></Route>
 				</Route>
 				<Route
 					path="/admin"
@@ -43,7 +45,7 @@ root.render(
 				{/* /admin/users */}
 			</Routes>
 		</BrowserRouter>
-	</React.StrictMode>
+	</>
 );
 
 // If you want to start measuring performance in your app, pass a function
