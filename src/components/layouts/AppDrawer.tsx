@@ -3,10 +3,8 @@ import {
 	List,
 	ListItem,
 	ListItemButton,
-	ListItemIcon,
 	ListItemText,
 } from '@mui/material';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavbarMenu } from './Header';
 

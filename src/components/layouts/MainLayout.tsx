@@ -6,6 +6,7 @@ import { Button, Container } from '@mui/material';
 import Footer from './Footer';
 import AppDrawer from './AppDrawer';
 import { useState } from 'react';
+import { MobileView } from 'react-device-detect';
 
 export default function MainLayout() {
 	// Drawer layout üzerinden görünüp görünmemesini sağlar
@@ -39,7 +40,9 @@ export default function MainLayout() {
 				<Outlet />
 			</Container>
 
-			<AppDrawer items={navItems} isOpen={isOpen}></AppDrawer>
+			<MobileView>
+				<AppDrawer items={navItems} isOpen={isOpen}></AppDrawer>
+			</MobileView>
 
 			<Footer>
 				<p>Alt Bilgi</p>
