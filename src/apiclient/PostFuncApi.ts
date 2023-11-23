@@ -43,15 +43,15 @@ axios.interceptors.response.use(
 	}
 );
 
-let controller = new AbortController();
-
-if (controller.signal.aborted) {
-	controller = new AbortController();
-}
+let controller!: AbortController;
+console.log('controller0', controller);
 
 // yani signal işlemi ile başlatılan bir request iptal edilebilir.
 export const FetchPosts = async (endpoint: string) => {
 	console.time('FetchPosts');
+
+	controller = new AbortController();
+	console.log('controller1', controller);
 
 	return await axios
 		.get<Post[]>(`${baseUrl}/${endpoint}`, {
@@ -62,6 +62,8 @@ export const FetchPosts = async (endpoint: string) => {
 };
 
 export const FetchPostById = async (endpoint: string, id: number) => {
+	controller = new AbortController();
+
 	return await axios
 		.get<Post>(`${baseUrl}/${endpoint}?id=${id}`, { signal: controller.signal })
 		.then((response: any) => {
@@ -70,5 +72,6 @@ export const FetchPostById = async (endpoint: string, id: number) => {
 };
 
 export const cancelSignal = () => {
+	console.log('controller2', controller);
 	controller.abort(); //sinyali kes
 };

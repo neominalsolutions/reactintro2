@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { FetchPosts, Post, cancelSignal } from '../apiclient/PostFuncApi';
+import { PostApiClient } from '../apiclient/PostApiClient';
 
 export default function PostsPageApiFunc() {
 	const [posts, setPosts] = useState<Post[]>([]);
+	const postClient = new PostApiClient('https://jsonplaceholder.typicode.com');
 
 	const loadData = async () => {
 		//  FetchPosts('/posts').then((data: any) => {
@@ -10,7 +12,10 @@ export default function PostsPageApiFunc() {
 		// 	console.log('data', data);
 		// });
 
-		let data = await FetchPosts('/posts');
+		// let data = await FetchPosts('/posts'); Func ile veri çekme
+		let data = await postClient.getPosts('/posts');
+
+		console.log('api-class-data', data);
 		setPosts(data || []);
 	};
 
@@ -20,9 +25,9 @@ export default function PostsPageApiFunc() {
 		loadData();
 		console.log('useEffect');
 
-		setTimeout(() => {
-			cancelSignal();
-		}, 3000);
+		// setTimeout(() => {
+		// 	cancelSignal();
+		// }, 1000);
 
 		return () => {
 			// componetten çıkarken network isteği atmış bulundum bu durumda bu isteği sonladırmam lazım
