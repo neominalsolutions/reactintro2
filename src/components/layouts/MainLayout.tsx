@@ -1,30 +1,37 @@
 // AnaLayout
 
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Header, { NavbarMenu } from './Header';
+import { Container } from '@mui/material';
+import Footer from './Footer';
 
 export default function MainLayout() {
+	const navItems: NavbarMenu[] = [
+		{
+			text: 'Anasayfa',
+			url: '/',
+		},
+		{
+			text: 'Hakkımızda',
+			url: '/about',
+		},
+		{
+			text: 'İletişim',
+			url: '/contact',
+		},
+	];
+
 	return (
-		<div style={{ padding: 10 }}>
-			<header>
-				<h1>Header</h1>
-			</header>
-			<nav style={{ padding: 5 }}>
-				<Link to="/">Anasayfa </Link> {' '}
-				<Link to="/about">Hakkımızda </Link>{' '}
-				<Link to="/contact">İletişim </Link>{' '}
-				<Link to="/admin/users">Kullanıcılar</Link>{' '}
-				<a target="blank" href="https://www.google.com">
-					External Link{' '}
-				</a>
-				{/* href kullanacak isek bu durumda uygulama dışı linklerde tercih edelim. sosyal medya linkleri */}
-			</nav>
+		<>
+			<Header items={navItems} />
 
-			<main>
-				{/* ana içerik */}
+			<Container sx={{ marginTop: '5rem' }} maxWidth={'lg'}>
 				<Outlet />
-			</main>
+			</Container>
 
-			<footer>Alt Bilgi</footer>
-		</div>
+			<Footer>
+				<p>Alt Bilgi</p>
+			</Footer>
+		</>
 	);
 }
