@@ -4,11 +4,14 @@ import { FetchPosts, Post, cancelSignal } from '../apiclient/PostFuncApi';
 export default function PostsPageApiFunc() {
 	const [posts, setPosts] = useState<Post[]>([]);
 
-	const loadData = () => {
-		FetchPosts('/posts').then((data: any) => {
-			setPosts(data || []);
-			console.log('data', data);
-		});
+	const loadData = async () => {
+		//  FetchPosts('/posts').then((data: any) => {
+		// 	setPosts(data || []);
+		// 	console.log('data', data);
+		// });
+
+		let data = await FetchPosts('/posts');
+		setPosts(data || []);
 	};
 
 	useEffect(() => {
